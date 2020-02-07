@@ -1,0 +1,38 @@
+#!/usr/bin/python
+import os
+
+
+def update():
+    update_command_1 = "sudo pacman -Syu"
+    update_command_2 = "yay -Syu"
+    print("Updating Main Repositories")
+    os.system(update_command_1)
+    print("Warning: Updating AUR")
+    os.system(update_command_2)
+
+
+def cleanup():
+    cleanup_command_1 = "sudo pacman -Rns $(pacman -Qtdq)"
+    cleanup_command_2 = "sudo paccache --remove --keep 1"
+    print("Warning: Cleaning up System")
+    os.system(cleanup_command_1)
+    os.system(cleanup_command_2)
+
+
+def main():
+    while True:
+        user_menu_main = input(
+            "What would you like to do?\n (1) Update\n (2) Cleanup System\n (3) Exit\n :")
+        if user_menu_main == "1":
+            update()
+        elif user_menu_main == "2":
+            cleanup()
+        elif user_menu_main == "3":
+            break
+        else:
+            print("Please enter a number between 1 and 3")
+            continue
+
+
+if __name__ == "__main__":
+    main()
