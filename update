@@ -4,6 +4,8 @@ import os
 
 def update():
     update_command_1 = "sudo pacman -Syu"
+    # Need to install 'yay' from AUR first, in order 
+    # to update AUR packages on the system as well
     update_command_2 = "yay -Syu"
     print("Updating Main Repositories")
     os.system(update_command_1)
